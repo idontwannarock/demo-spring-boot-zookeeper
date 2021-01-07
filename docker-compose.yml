@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  docker-zookeeper:
+    image: zookeeper
+    restart: always
+    ports:
+      - 2181:2181
+  docker-zookeeper-client-1:
+    image: docker-zookeeper-client
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+  docker-zookeeper-client-2:
+    image: docker-zookeeper-client
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 9001:9000
